@@ -1,7 +1,5 @@
 # Jenkins
 
-add line
-
 Build image and launch Jenkins
 docker-compose up -d --build
 
