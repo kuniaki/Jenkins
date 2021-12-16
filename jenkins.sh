@@ -8,10 +8,6 @@ touch "${COPY_REFERENCE_FILE_LOG}" || { echo "Can not write to ${COPY_REFERENCE_
 echo "--- Copying files at $(date)" >> "$COPY_REFERENCE_FILE_LOG"
 find "${REF}" \( -type f -o -type l \) -exec bash -c '. /usr/local/bin/jenkins-support; for arg; do copy_reference_file "$arg"; done' _ {} +
 
-# Copy SSH keys
-mkdir -p /var/jenkins_home/.ssh
-cp /tmp/id_rsa /var/jenkins_home/.ssh/id_rsa
-cp /tmp/id_rsa.pub /var/jenkins_home/.ssh/id_rsa.pub
 
 # if `docker run` first argument start with `--` the user is passing jenkins launcher arguments
 if [[ $# -lt 1 ]] || [[ "$1" == "--"* ]]; then
