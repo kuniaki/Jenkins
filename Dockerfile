@@ -1,4 +1,9 @@
 FROM jenkins/jenkins:2.263.1-lts-slim
+
+#install Plugin
+COPY plugin.txt /usr/share/jenkins/ref/
+RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugin.txt
+
 USER root
 RUN apt-get update && apt-get install -y apt-transport-https \
        ca-certificates curl gnupg2 \
